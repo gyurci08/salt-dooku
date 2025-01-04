@@ -1,0 +1,11 @@
+# Managed by SaltStack
+
+Port {{ pillar['sshd']['port'] }}
+PermitRootLogin {{ pillar['sshd']['permit_root_login'] }}
+PasswordAuthentication {{ pillar['sshd']['password_authentication'] }}
+ChallengeResponseAuthentication {{ pillar['sshd']['challenge_response_authentication'] }}
+UsePAM {{ pillar['sshd']['use_pam'] }}
+X11Forwarding {{ pillar['sshd']['x11_forwarding'] }}
+PrintMotd {{ pillar['sshd']['print_motd'] }}
+AcceptEnv {{ pillar['sshd']['accept_env']|join(' ') }}
+Subsystem {{ pillar['sshd']['subsystem'] }}

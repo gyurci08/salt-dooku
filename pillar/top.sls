@@ -1,14 +1,20 @@
+# Used to map pillar data to specific minions or groups of minions. 
 base:
   '*':
     - common
-  'role:webserver':
-    - match: grain
-    - webserver
-  'role:database':
-    - match: grain
-    - database
-{# 
-  'G@environment:production and G@role:application':
+    - user.init
+    - sshd.init
+
+  'G@role:webserver':
     - match: compound
-    - production_app
-#}
+    - roles.webserver
+
+  'G@role:database':
+    - match: compound
+    - roles.database
+
+  'G@role:application':
+    - match: compound
+    - roles.application
+
+# salt 'minion-id' grains.set role webserver
